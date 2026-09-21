@@ -14,7 +14,7 @@ Wie die Pipeline arbeitet der Abgleich auch mit **einer** Elektrode (ICA, SOBI u
 ica-demo → sobi-demo → sca-demo
 pca-demo + Clustering-Linie → spike-sorting-demo (Standardpipeline)
                               → template-matching-demo (Vorlagenabgleich: löst Überlappung auf)
-                              → Verzögerungsgraph / Clique-Überdeckung      [nicht gebaut]
+                              → delay-graph-demo (Verzögerungsgraph: Zeitverzögerungen statt Wellenform)
 ```
 
 | Frage | Ergebnis (4 Neuronen, 4 Elektroden, Rauschen 0.05, 20000 Abtastwerte; Mittel über 5 feste Datensätze, Seeds 100000–100004; Verfeinerung "neu clustern", 2 Runden) |
