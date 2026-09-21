@@ -12,6 +12,7 @@ Der Vorlagenabgleich dreht die Sicht um: jedes Neuron hat eine **Vorlage** (sein
 Wie die Pipeline arbeitet der Abgleich auch mit **einer** Elektrode (ICA, SOBI und SCA brauchen mehr). Seine Vorlagen bekommt er aus den Clustern der Pipeline – und **die** sind die eigentliche Schwierigkeit.
 ```
 ica-demo → sobi-demo → sca-demo
+        ↘ nmf-demo (Nicht-Negativität statt Unabhängigkeit; einkanalfähig)
 pca-demo + Clustering-Linie → spike-sorting-demo (Standardpipeline)
                               → template-matching-demo (Vorlagenabgleich: löst Überlappung auf)
                               → delay-graph-demo (Verzögerungsgraph: Zeitverzögerungen statt Wellenform)
