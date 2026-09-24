@@ -24,6 +24,7 @@ from tm_presets import (
     init_session_state_defaults,
     load_permalink_settings,
     randomize_seed,
+    seed_widget,
     sync_query_params,
 )
 from tm_visualization import (
@@ -196,6 +197,7 @@ with st.sidebar:
              "das ist das Einzige, das auch falsche Cluster verändert: bei doppelter Feuerrate 0.97 (keine und neu mitteln 0.84), bei fünf Neuronen 0.91 (0.77 / 0.79).",
     )
     if refine != "none":
+        seed_widget("rounds_slider")
         rounds = st.slider(
             "Runden", *bounds("rounds_slider"), key="rounds_slider",
             help="Wie oft die Vorlagen neu geschätzt und erneut abgeglichen werden. Eine Runde genügt: bei doppelter Feuerrate 0.97 nach einer, zwei und drei Runden, bei fünf Neuronen 0.91.",
