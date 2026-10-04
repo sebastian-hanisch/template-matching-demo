@@ -99,15 +99,15 @@ PRESETS = {
     "Hohe Feuerrate, keine Verfeinerung": _preset(rate_scale=2.0, refine="none"),
 }
 PRESET_HELP = {
-    "Vier Neuronen, vier Elektroden": "Der Grundfall: der Abgleich erreicht Spitzen-F1 0.99 (Pipeline 0.94) und sortiert von den überlappenden Spikes 93 % richtig (Pipeline 85 %); mit den wahren Vorlagen wäre es kaum besser (0.99).",
-    "Hohe Feuerrate": "Doppelte Feuerrate: jeder dritte Spike überlappt mit einem anderen, die Pipeline fällt auf Spitzen-F1 0.77, der Abgleich hält 0.97 - so gut wie mit den wahren Vorlagen (0.97). Genau dafür ist er gedacht.",
-    "Eine Elektrode": "Nur eine Elektrode: der Abgleich hilft nicht (0.55 gegen 0.51 der Pipeline) - seine Vorlagen kommen aus den Clustern der Pipeline, und die sind hier schon falsch. Mit den wahren Vorlagen wären es 0.94: "
+    "Vier Neuronen, vier Elektroden": "Der Grundfall (Mittel über fünf Aufnahmen): der Abgleich erreicht Spitzen-F1 0.99 (Pipeline 0.94) und sortiert von den überlappenden Spikes 93 % richtig (Pipeline 85 %); mit den wahren Vorlagen wäre es kaum besser (0.99).",
+    "Hohe Feuerrate": "Doppelte Feuerrate (Mittel über fünf Aufnahmen): jeder dritte Spike überlappt mit einem anderen, die Pipeline fällt auf Spitzen-F1 0.77, der Abgleich hält 0.97 - so gut wie mit den wahren Vorlagen (0.97). Genau dafür ist er gedacht.",
+    "Eine Elektrode": "Nur eine Elektrode (Mittel über fünf Aufnahmen): der Abgleich hilft nicht (0.55 gegen 0.51 der Pipeline) - seine Vorlagen kommen aus den Clustern der Pipeline, und die sind hier schon falsch. Mit den wahren Vorlagen wären es 0.94: "
                       "der Abgleich selbst kann es, die Vorlagen fehlen.",
     "Fünf Neuronen": "Fünf Neuronen: die Wellenformen liegen dichter, k-means bildet in manchen Aufnahmen falsche Cluster - dann sind die Vorlagen falsch. Im Mittel über fünf Aufnahmen 0.91 gegen 0.74 der Pipeline, in dieser Aufnahme nur 0.72 "
                       "(Orakel: 0.96): die Streuung von Aufnahme zu Aufnahme ist groß.",
-    "Ohne Amplitudengrenze": "Die kleinste erlaubte Amplitude ist 0: nach jedem abgezogenen Spike bleibt ein kleiner Rest, der bei so geringem Rauschen weit über der Schwelle liegt - der Abgleich meldet ihn als weiteren Spike. "
+    "Ohne Amplitudengrenze": "Die kleinste erlaubte Amplitude ist 0 (Mittel über fünf Aufnahmen): nach jedem abgezogenen Spike bleibt ein kleiner Rest, der bei so geringem Rauschen weit über der Schwelle liegt - der Abgleich meldet ihn als weiteren Spike. "
                              "Es entstehen etwa dreimal so viele Ereignisse wie Spikes (Spitzen-F1 0.35); ab einer Grenze von 0.2 ist es wieder gut (0.98).",
-    "Hohe Feuerrate, keine Verfeinerung": "Dieselbe Aufnahme wie 'Hohe Feuerrate', aber die Start-Vorlagen bleiben unverändert: die Cluster der Pipeline sind durch die überlappenden Spikes teilweise falsch geschnitten, und der Abgleich erbt das: "
+    "Hohe Feuerrate, keine Verfeinerung": "Dieselben Einstellungen wie 'Hohe Feuerrate', aber die Start-Vorlagen bleiben unverändert (Mittel über fünf Aufnahmen): die Cluster der Pipeline sind durch die überlappenden Spikes teilweise falsch geschnitten, und der Abgleich erbt das: "
                                          "Spitzen-F1 0.84 statt 0.97. 'Vorlagen neu mitteln' ändert daran nichts (0.84) - erst 'bereinigte Spikes neu clustern' holt den Rest.",
 }
 # Bänder (Seed des Presets; Werte mit dem ausgelieferten Code kalibriert, bewusst weit): Spitzen-F1 des Abgleichs (f1), der Pipeline (pipe_f1), mit wahren Vorlagen (oracle_f1), Trefferquote (recall),

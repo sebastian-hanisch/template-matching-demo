@@ -466,12 +466,12 @@ st.markdown(
 | **Die Vorlagen stimmen** | Kommen sie aus falschen Clustern, stimmt auch der Abgleich nicht: mit einer Elektrode 0.55 statt 0.94 mit den wahren Vorlagen (Preset "Eine Elektrode"). | Bessere Clusterverfahren für die Start-Vorlagen (siehe Clustering-Linie); Vorlagen aus Wissen über die Neuronen |
 | **Das Signal ist die Summe der Vorlagen plus weißes Rauschen** | Korreliertes Rauschen lässt Passungen zufällig ausschlagen (hier wäre eine Weißung nötig - dieses Rauschen ist weiß). Nichtlineare Überlagerung wird nicht erklärt. | Weißung (Kilosort), Filter |
 | **Die Vorlage ändert sich nicht (bis auf die Amplitude)** | Drift und Verformung (hier nicht modelliert) lassen Reste stehen, die als Geister auftauchen; die Amplitudengrenze fängt sie nur zum Teil ab. | Vorlagen, die nachgeführt werden |
-| **Gieriges Abziehen findet die richtige Zerlegung** | Bei dichter Überlappung ist die beste Einzelpassung nicht immer die richtige; bei Preset "Hohe Feuerrate" mit Faktor 4 gehen 8 % der Spikes verloren. | Gemeinsame Optimierung mehrerer Ereignisse |
+| **Gieriges Abziehen findet die richtige Zerlegung** | Bei dichter Überlappung ist die beste Einzelpassung nicht immer die richtige; bei Feuerratenfaktor 4 (das Preset "Hohe Feuerrate" setzt 2) gehen 8 % der Spikes verloren. | Gemeinsame Optimierung mehrerer Ereignisse |
 | **Neuronenzahl bekannt** | Jedes Start-Cluster wird eine Vorlage; die Silhouette wählt zu viele. | Übersplitten und Verschmelzen nach Regeln oder von Hand |
 | **Wellenform trägt die Information** | Ein anderer Ansatz nutzt statt der Form die **Zeitverzögerungen** desselben Spikes über mehrere Elektroden (Verzögerungsgraph, Nachbarschaftsmengen, Clique-Überdeckungen) - in der Dissertation des Autors (Universität Rostock, 2017) untersucht. | **Verzögerungsgraph** (späteres Stück des Zweigs; dieses Stück misst nur den Vorlagenabgleich) |
 """
 )
-st.caption("Die genannten Verfahren sind die nächsten Stücke der Quellentrennung-Linie; hier steht nur, welche Annahme sie jeweils lockern. Ein Leistungsvergleich mit dem Verzögerungsgraph-Ansatz wird in dieser Demo nicht behauptet.")
+st.caption("Der Verzögerungsgraph ist ein weiteres Stück der Quellentrennung-Linie (eigene Demo); die übrigen genannten Verfahren sind Hinweise auf mögliche Erweiterungen. Hier steht nur, welche Annahme sie jeweils lockern. Ein Leistungsvergleich mit dem Verzögerungsgraph-Ansatz wird in dieser Demo nicht behauptet.")
 
 st.markdown("---")
 
@@ -504,6 +504,6 @@ st.markdown("---")
 
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Quellentrennung: von ICA bis Verzögerungsgraph](https://sebastianhanisch.net/konzepte-quellentrennung.html)."
 )
