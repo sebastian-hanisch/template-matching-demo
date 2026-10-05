@@ -79,6 +79,7 @@ Regler: Neuronen (2–5), Elektroden (1–8), Feuerrate (×0.25–×4), Wellenfo
 - **Die Neuronenzahl ist bekannt** (außer im Silhouette-Modus, wo jedes zu viel gewählte Cluster zu einer Vorlage wird); Sweeps und Szenen rechnen immer mit bekannter Neuronenzahl.
 - **Der Verzögerungsgraph-Ansatz** (die Dissertation des Autors, Universität Rostock 2017: statt der Wellenform die Zeitverzögerungen desselben Spikes über mehrere Elektroden) wird nur genannt; **ein Leistungsvergleich mit ihm ist nicht Teil dieser Demo.**
 - **Synthetische Daten:** feste Spitzenform je Neuron, exakt lineare Mischung, weißes Gauß'sches Rauschen, Elektroden auf einer Zeile. Literatur nur mit Namen: das Verfahren folgt dem Kilosort-Ansatz (Pachitariu et al.), vereinfacht.
+- **Die Spitzenerkennung des Spitzen-F1 (Kopie aus ica-demo) wandte die Mindesttiefe erst ab 10 gefundenen Spitzen an:** bei kürzeren Spuren blieben Rauschspitzen über 4 σ_MAD als Falschtreffer stehen, obwohl dieselbe Spur mit mehr Spitzen sie verworfen hätte. Jetzt gilt die Regel (30 % der typischen Tiefe, typische Tiefe = Median der höchstens 10 tiefsten Spitzen) auch dort, dann mit dem Median der gefundenen Spitzen. Gemessen über die 5 festen Sweep-Datensätze mit den Standard-Einstellungen: nur das Spitzen-F1 der ICA bei Feuerrate ×0.25 ändert sich (0.997 → 1.000); alle übrigen Sweeps, Tabellen und Presets sowie alle in dieser Datei genannten Zahlen bleiben unverändert. Als Test hinterlegt (`tests/test_detect_spikes_depth.py`).
 
 ## Verifikation
 

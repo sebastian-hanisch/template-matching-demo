@@ -105,7 +105,7 @@ DETECT_DEPTH_FRACTION = 0.3        # ... mindestens aber 30 % der typischen Spit
 
 
 def detect_spikes(x):
-    """Negative Spitzen von x (Vorzeichen bereits wie beim Neuron): tiefste zuerst, Mindestabstand; Schwelle max(4 sigma_MAD, 0.3 x typische Tiefe)."""
+    """Negative Spitzen von x (Vorzeichen bereits wie beim Neuron): tiefste zuerst, Mindestabstand; Schwelle max(4 sigma_MAD, 0.3 x typische Tiefe); typische Tiefe = Median der (höchstens) 10 tiefsten Spitzen."""
     sigma = np.median(np.abs(x - np.median(x))) / 0.6745
     threshold = -DETECT_SIGMA_FACTOR * sigma
     taken = np.zeros(len(x), bool)
@@ -117,8 +117,11 @@ def detect_spikes(x):
             continue
         taken[t] = True
         peaks.append(t)
-        if len(peaks) == 10:                                             # typische Tiefe = Median der 10 tiefsten Spitzen
+        if len(peaks) == 10:                                             # typische Tiefe = Median der 10 tiefsten Spitzen (ab hier gilt die Schwelle laufend)
             threshold = min(threshold, DETECT_DEPTH_FRACTION * float(np.median(x[peaks])))
+    if 0 < len(peaks) < 10:                                              # weniger als 10 Spitzen: typische Tiefe = Median der gefundenen
+        threshold = min(threshold, DETECT_DEPTH_FRACTION * float(np.median(x[peaks])))
+        peaks = [t for t in peaks if x[t] <= threshold]
     return np.sort(np.array(peaks, dtype=int))
 
 
@@ -174,10 +177,10 @@ def match_detections(detected, truth_times, tolerance=C.MATCH_TOLERANCE):
     out = np.full(len(detected), -1, dtype=int)
     used = np.zeros(len(truth_times), bool)
     for i, t in enumerate(detected):
-        j = int(np.searchsorted(truth_times, t))
+        lo, hi = int(np.searchsorted(truth_times, t - tolerance, side="left")), int(np.searchsorted(truth_times, t + tolerance, side="right"))
         best, best_d = -1, tolerance + 1
-        for c in (j - 2, j - 1, j, j + 1):
-            if 0 <= c < len(truth_times) and not used[c] and abs(int(truth_times[c]) - int(t)) < best_d:
+        for c in range(lo, hi):
+            if not used[c] and abs(int(truth_times[c]) - int(t)) < best_d:
                 best, best_d = c, abs(int(truth_times[c]) - int(t))
         if best >= 0 and best_d <= tolerance:
             out[i] = best
